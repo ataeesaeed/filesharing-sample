@@ -61,6 +61,8 @@ export default {
       this.$refs.fileUploader.value = "";
     },
     onChange(e) {
+      this.fileTypeError = false;
+      this.fileSizeError = false;
       const files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
       this.file = files[0];
