@@ -5,7 +5,6 @@ export function configureInterceptor() {
   let realFetch = window.fetch;
 
   window.fetch = function(url, opts) {
-    console.log('-0-0-0-0-0-', url, opts);
 
     if (!opts) {
       opts = { method: 'get' };
