@@ -84,7 +84,7 @@ export default {
         .catch((error) => {
           self.hideRemoveDialog();
           self.$emit("unset-loading");
-          self.$snotify.errror(error.message || "Oops! Something went wrong");
+          self.$snotify.error(error.message || "Oops! Something went wrong");
         });
     },
     calculatePagesNumber() {
@@ -136,7 +136,7 @@ export default {
       })
       .catch((error) => {
         self.$emit("unset-loading");
-        self.$snotify.errror(error.message || "Oops! Something went wrong");
+        self.$snotify.error(error.message || "Oops! Something went wrong");
       });
   },
 };

@@ -91,11 +91,11 @@ export class FilesController {
   async remove(
     @Param('id') id: string,
     @AuthUser() user: any,
-  ): Promise<string> {
+  ): Promise<any> {
     const fileData = await this.filesService.remove(id, user.userId);
-    if (!fileData) return 'No file found with this id';
+    if (!fileData) return { message: 'No file found with this id' };
     removeFile(fileData.path);
-    return 'File successfully removed';
+    return { message: 'File successfully removed' };
   }
 }
 
