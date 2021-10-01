@@ -34,7 +34,7 @@ export function configureInterceptor() {
       .then((response) => {
         response = response? JSON.parse(response): {};
         if (response.statusCode && +response.statusCode > 400) {
-          throw response;
+          throw {url, response};
         }
         return response;
       })
@@ -57,7 +57,7 @@ export function configureInterceptor() {
       .then((response) => {
         response = JSON.parse(response);
         if (response.statusCode && +response.statusCode > 400) {
-          throw response;
+          throw {url, response};
         }
         return response;
       })
@@ -98,7 +98,8 @@ function headers(type) {
 }
 
 function handlerError(error) {
-  if (error && [401, 403].includes(error.statusCode)) {
+  if (error && error.response && [401, 403].includes(error.response.statusCode)) {
+    if(error.url.indexOf('login') != -1) throw error.response;
     localStorage.removeItem('currentUser');
     router.go('/enter');
   } else {

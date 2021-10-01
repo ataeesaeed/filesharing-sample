@@ -28,6 +28,7 @@ function login(username, password) {
       return user;
     })
     .catch((error) => {
+      if(error && error.message === 'Unauthorized') error.message = 'Invalid username or password'
       throw error;
     });
 }
