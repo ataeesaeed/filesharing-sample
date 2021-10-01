@@ -12,7 +12,7 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn color="red" text @click="onAccept()">Remove</v-btn>
-        <v-btn color="lightgray" text @click="onCancel()"> Cancel</v-btn>
+        <v-btn color="lightgray" text @click="$emit('on-close')"> Cancel</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -20,6 +20,6 @@
 
 <script>
 export default {
-  props: ["dialog", "message", "onAccept", "onCancel"],
+  props: ["dialog", "message", "onAccept"],
 };
 </script>

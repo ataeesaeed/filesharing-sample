@@ -4,7 +4,7 @@
       :dialog="removeFileData.dialog"
       :message="removeFileData.removeMessage"
       :onAccept="removeFile"
-      :onCancel="hideRemoveDialog"
+      @on-close="hideRemoveDialog"
     />
     <div class="cards">
       <div class="card" v-for="file in pagination.filesToShow" :key="file.id">
