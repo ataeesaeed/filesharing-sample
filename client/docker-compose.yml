@@ -1,0 +1,13 @@
+version: '3'
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    container_name: vue-ui
+    command: npm run serve
+    volumes:
+       - ./:/usr/src/app/filesharing
+       - /usr/src/app/filesharing/node_modules

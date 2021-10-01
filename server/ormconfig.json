@@ -1,0 +1,18 @@
+{
+  "type": "mysql",
+  "host": "database",
+  "port": 3306,
+  "username": "root",
+  "password": "root",
+  "database": "filesharing",
+  "entities": ["dist/**/*.entity.js"],
+  "autoLoadEntities": true,
+  "synchronize": true,
+  "migrationsRun": true,
+  "logging": true,
+  "logger": "file",
+  "migrations": ["/migrations/**/*{.ts,.js}"],
+  "cli": {
+    "migrationsDir": "src/migrations"
+  }
+}

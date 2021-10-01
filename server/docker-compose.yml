@@ -1,0 +1,43 @@
+version: '3.3'
+
+services:
+    dev:
+        container_name: filesharing_api_dev
+        image: filesharing-api-dev:1.0.0
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        command: npm run start:debug
+        ports:
+            - 3000:3000
+        networks:
+            - filesharing-network
+        volumes:
+            - .:/usr/src/app
+            - /usr/src/app/node_modules
+        links:
+            - mysql_db:database
+        depends_on:
+            - mysql_db
+        restart: unless-stopped
+    mysql_db:
+        container_name: mysql_dev
+        image: mysql:latest
+        command: --default-authentication-plugin=mysql_native_password --innodb-use-native-aio=0
+        networks:
+            - filesharing-network
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: 'filesharing'
+            # Password for root access
+            MYSQL_ROOT_PASSWORD: 'root'
+        ports:
+            - '3306:3306'
+        expose:
+            - '3306'
+        volumes:
+            - my-db:/var/lib/mysql
+networks:
+    filesharing-network:
+volumes:
+    my-db:
