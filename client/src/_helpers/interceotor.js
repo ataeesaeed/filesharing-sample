@@ -98,11 +98,11 @@ function headers(type) {
 }
 
 function handlerError(error) {
+  if(error.url.indexOf('login') != -1) throw error.response;
   if (error && error.response && [401, 403].includes(error.response.statusCode)) {
-    if(error.url.indexOf('login') != -1) throw error.response;
     localStorage.removeItem('currentUser');
     router.go('/enter');
   } else {
-    throw error;
+    throw error.response? error.response : error;
   }
 }
