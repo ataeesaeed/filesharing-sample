@@ -1,5 +1,6 @@
 <template>
-  <div class="manage">
+  <div class="manage-wrapper">
+    <div class="manage">
     <RemoveDialog
       :dialog="removeFileData.dialog"
       :message="removeFileData.removeMessage"
@@ -24,6 +25,7 @@
         @input="onInput"
       ></v-pagination>
     </div>
+  </div>
   </div>
 </template>
 
@@ -143,13 +145,16 @@ export default {
 </script>
 
 <style scoped>
-.manage {
+.manage-wrapper {
+  background: #ccdde8;
   width: 100%;
   height: 100%;
+}
+
+.manage {
   padding: 2rem;
   max-width: calc(15rem * 5);
   margin: auto;
-  background: #ccdde8;
 }
 
 .cards {
